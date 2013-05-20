@@ -149,13 +149,12 @@
 <p>Specifically, whenever you define a custom menu item using our helper method:</p>
 
 <div class="highlight"><pre>  <span class="o">.</span><span class="n">.</span>
-  <span class="n">has_menu_item</span> <span class="ss">:email</span> <span class="o">.</span><span class="n">.</span>
+  <span class="n">has_menu_item</span> <span class="ss">:email</span><span class="p">,</span> <span class="o">.</span><span class="n">.</span>
        <span class="o">.</span><span class="n">.</span>
        <span class="n">handles_with</span><span class="p">:</span> <span class="ss">:email_callback_method</span>
-
-<span class="no">We</span><span class="err">'</span><span class="n">ve</span> <span class="n">ensured</span> <span class="n">that</span> <span class="n">the</span> <span class="nb">method</span> <span class="sb">`email_callback_method`</span> <span class="nb">gets</span> <span class="n">executed</span> <span class="n">whenever</span> <span class="n">your</span> <span class="n">subscription</span> <span class="n">notification</span> <span class="n">callback</span> <span class="n">url</span> <span class="n">is</span> <span class="n">pinged</span> <span class="n">with</span> <span class="n">the</span> <span class="n">corresponding</span> <span class="n">menu</span><span class="o">-</span><span class="n">item</span> <span class="n">event</span><span class="o">.</span> 
-
 </pre></div>
+
+<p>We've ensured that the method <code>email_callback_method</code> gets executed whenever your subscription notification callback url is pinged with the corresponding menu-item event. </p>
         </section>
 
         <aside id="sidebar">
