@@ -1,44 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Glass-Rails by logical42</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
     <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+    <title>Glass-Rails by logical42</title>
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/logical42/glass-rails">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/logical42/glass-rails/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/logical42/glass-rails/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
+    <header>
+      <div class="inner">
+        <h1>Glass-Rails</h1>
+        <h2>A DSL for building google glass apps using ruby on rails. </h2>
+        <a href="https://github.com/logical42/glass-rails" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
 
-    <div class="wrapper">
-
-      <section>
-        <div id="title">
-          <h1>Glass-Rails</h1>
-          <p>A DSL for building google glass apps using ruby on rails. </p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/logical42">logical42</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
-        </div>
-
-        <h2>Glass-Rails</h2>
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h2>Glass-Rails</h2>
 
 <p>This is a ruby gem extracted out of <a href="http://thirst.co/glass">Thirst Droplet</a>, a google glass application. The goal of this gem is to provide a more convenient wrapper around the official <a href="https://github.com/google/google-api-ruby-client">Google Api Client for Ruby</a>. This gem is still quite young, and in development, so keep posted for updates (and we also &lt;3 pull requests). </p>
 
@@ -60,7 +50,8 @@
 
 <p>For convenience, this gem provides a command to scaffold some necessary files for glass development:</p>
 
-<pre lang="shell"><code>$ rails g glass:install &lt;optional_name_of_user_model_which_otherwise_defaults_to_User&gt;
+<pre lang="shell"><code>$ rails g glass:install &lt;optional_name_of_user_model&gt;
+                       # defaults to 'User'
 </code></pre>
 
 <p>If the name of user model is not <code>User</code> then you must specify this when invoking the <code>glass:install</code> command:</p>
@@ -113,9 +104,11 @@
 <p>You may want to specify a default template to use for a given timeline item. For example, if I had two timeline item models, <code>Glass::Tweet</code> and another <code>Glass::BasketballScore</code>, then I could specify a default template for the tweet model to use by using a helper_method in the class definition, like so:</p>
 
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Glass</span><span class="o">::</span><span class="no">Tweet</span> <span class="o">&lt;</span> <span class="ss">Glass</span><span class="p">:</span><span class="ss">:TimelineItem</span>
-  <span class="n">defaults_template</span> <span class="ss">with</span><span class="p">:</span> <span class="s2">"tweet.html.erb"</span> <span class="c1">## this path is relative to your </span>
-                                           <span class="c1">## glass_templates_path, which you can</span>
-                                           <span class="c1">## set in your `config/initializers/glass.rb` file</span>
+  <span class="n">defaults_template</span> <span class="ss">with</span><span class="p">:</span> <span class="s2">"tweet.html.erb"</span> <span class="c1">## this path is relative to </span>
+                                           <span class="c1">## your glass_templates_path, </span>
+                                           <span class="c1">## which you can set in your</span>
+                                           <span class="c1">## `config/initializers/glass.rb` </span>
+                                           <span class="c1">## file.</span>
 
 <span class="k">end</span>
 </pre></div>
@@ -123,8 +116,9 @@
 <p>and then you could define another default template for your basketball score model like so:</p>
 
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Glass</span><span class="o">::</span><span class="no">BasketballScore</span> <span class="o">&lt;</span> <span class="ss">Glass</span><span class="p">:</span><span class="ss">:TimelineItem</span>
-  <span class="n">defaults_template</span> <span class="ss">with</span><span class="p">:</span> <span class="s2">"two_column.html.erb"</span> <span class="c1">## since this would make sense if</span>
-                                                <span class="c1">## wanted to show a score in each column.</span>
+  <span class="n">defaults_template</span> <span class="ss">with</span><span class="p">:</span> <span class="s2">"two_column.html.erb"</span> <span class="c1">## since this would make</span>
+                                                <span class="c1">## sense if wanted to show </span>
+                                                <span class="c1">## a score in each column.</span>
 <span class="k">end</span>
 </pre></div>
 
@@ -138,9 +132,12 @@
 
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Glass</span><span class="o">::</span><span class="no">Tweet</span> <span class="o">&lt;</span> <span class="ss">Glass</span><span class="p">:</span><span class="ss">:TimelineItem</span>
   <span class="n">has_menu_item</span> <span class="ss">:email</span><span class="p">,</span> <span class="n">icon_url</span><span class="p">:</span> <span class="s2">"http://www.example.com/example-email-icon.png"</span><span class="p">,</span>
-                        <span class="n">display_name</span><span class="p">:</span> <span class="s2">"Email"</span><span class="p">,</span> <span class="c1"># this is what is shown as text for the menu item</span>
-                        <span class="n">handles_with</span><span class="p">:</span> <span class="ss">:email_callback</span> <span class="c1"># we'll ignore this for now.</span>
-  <span class="n">has_menu_item</span> <span class="ss">:read_aloud</span>
+                        <span class="n">display_name</span><span class="p">:</span> <span class="s2">"Email"</span><span class="p">,</span> <span class="c1"># this is what is shown </span>
+                                               <span class="c1"># as text for the menu item</span>
+                        <span class="n">handles_with</span><span class="p">:</span> <span class="ss">:email_callback</span> 
+                                               <span class="c1"># we'll ignore this for now.</span>
+  <span class="n">has_menu_item</span> <span class="ss">:read_aloud</span> <span class="c1">## this is a built-in action.</span>
+
 <span class="k">end</span>
 </pre></div>
 
@@ -167,11 +164,26 @@
 <p>We've ensured that the method <code>email_callback_method</code> gets executed whenever your subscription notification callback url is pinged with the corresponding menu-item event. </p>
 
 <hr><p>This framework is still young and being actively developed. We &lt;3 bug reports and pull requests.</p>
-      </section>
+        </section>
 
+        <aside id="sidebar">
+          <a href="https://github.com/logical42/glass-rails/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/logical42/glass-rails/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/logical42/glass-rails"></a> is maintained by <a href="https://github.com/logical42">logical42</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-              <script type="text/javascript">
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
