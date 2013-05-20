@@ -1,34 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
     <title>Glass-Rails by logical42</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
-
   <body>
-    <header>
-      <div class="inner">
-        <h1>Glass-Rails</h1>
-        <h2>A DSL for building google glass apps using ruby on rails. </h2>
-        <a href="https://github.com/logical42/glass-rails" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/logical42/glass-rails">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/logical42/glass-rails/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/logical42/glass-rails/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h2>Glass-Rails</h2>
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Glass-Rails</h1>
+          <p>A DSL for building google glass apps using ruby on rails. </p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/logical42">logical42</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h2>Glass-Rails</h2>
 
 <p>This is a ruby gem extracted out of <a href="http://thirst.co/glass">Thirst Droplet</a>, a google glass application. The goal of this gem is to provide a more convenient wrapper around the official <a href="https://github.com/google/google-api-ruby-client">Google Api Client for Ruby</a>. This gem is still quite young, and in development, so keep posted for updates (and we also &lt;3 pull requests). </p>
 
@@ -96,9 +106,9 @@
 
 <p>This would create a model for me in the following directory <code>app/models/glass/tweet.rb</code>. This <code>Glass::Tweet</code> model would inherit from <code>Glass::TimelineItem</code> and would therefore be accompanied by a sugary goodness which makes posting to glass timelines a ton easier. </p>
 
-<h4>Setting up a Glass Model</h4>
+<h3>Setting up a Glass Model</h3>
 
-<h5>Defining a Default Template</h5>
+<hr><h4>Defining a Default Template</h4>
 
 <p>You may want to specify a default template to use for a given timeline item. For example, if I had two timeline item models, <code>Glass::Tweet</code> and another <code>Glass::BasketballScore</code>, then I could specify a default template for the tweet model to use by using a helper_method in the class definition, like so:</p>
 
@@ -118,7 +128,7 @@
 <span class="k">end</span>
 </pre></div>
 
-<h5>Defining Menu Items on the Timeline Item</h5>
+<h4>Defining Menu Items on the Timeline Item</h4>
 
 <p>This gem provides some meta-programming magic to ease the creation of both custom and built-in menu-items for glass, by providing an easy to use DSL for specifying custom and built-in menu-items that a timeline-item should have..</p>
 
@@ -138,7 +148,7 @@
 
 <p>You can define a different set of menu items for each model, so that would probably be something to consider when architecting your glass app. </p>
 
-<h3>Subscriptions / Notifications</h3>
+<hr><h3>Subscriptions / Notifications</h3>
 
 <p>The subscription/notification aspect of the mirror api is probably one of the most opaque aspects of the api (at least, in my opinion), but we've tried to include some tools to help get this part set up for you as well. </p>
 
@@ -155,26 +165,13 @@
 </pre></div>
 
 <p>We've ensured that the method <code>email_callback_method</code> gets executed whenever your subscription notification callback url is pinged with the corresponding menu-item event. </p>
-        </section>
 
-        <aside id="sidebar">
-          <a href="https://github.com/logical42/glass-rails/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/logical42/glass-rails/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
+<hr><p>This framework is still young and being actively developed. We &lt;3 bug reports and pull requests.</p>
+      </section>
 
-          <p class="repo-owner"><a href="https://github.com/logical42/glass-rails"></a> is maintained by <a href="https://github.com/logical42">logical42</a>.</p>
-
-          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
     </div>
-
-            <script type="text/javascript">
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
